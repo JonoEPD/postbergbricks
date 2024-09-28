@@ -1,6 +1,14 @@
 # postbergbricks
 Playing with postgres+iceberg interop and comparing partitioning strategies.
 
+## setup
+
+```
+docker-compose up -d
+docker exec -it postgres psql -U myuser -d mydb
+```
+Then run the scripts adhoc.
+
 # Testing Partitioning
 
 Partitiong strategy is to create a unique partition for each data_id.
