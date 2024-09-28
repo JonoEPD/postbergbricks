@@ -69,3 +69,7 @@ SELECT COUNT(*) FROM dataset WHERE label LIKE '(abc%'; -- 10k: timing 56s for le
 SELECT COUNT(*) FROM dataset WHERE label LIKE '%abc%'; -- 100k: timing 300ms for both-sides match
 SELECT COUNT(*) FROM dataset WHERE label LIKE '%(%bcd%'; -- 80k: timing 270ms for complex search
 SELECT label, COUNT(*) FROM dataset WHERE label LIKE '%(%bcd%' GROUP BY label; -- 80k: timing still 270ms for a groupby
+
+-- test retrieval speed
+DROP TABLE IF EXISTS test_write_speed;
+CREATE TABLE test_write_speed AS (SELECT* FROM dataset WHERE data_id='20240423'); -- 700ms
